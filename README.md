@@ -1,3 +1,5 @@
+Criteria for assignment included below. I've written some javascript code to meet the criteria listed below and to generate a password based on the user selected criteria.
+
 # 03 JavaScript: Password Generator
 
 ## Your Task
