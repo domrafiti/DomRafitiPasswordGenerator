@@ -1,10 +1,6 @@
-
-// GIVEN I need a new, secure password
-// WHEN I click the button to generate a password
 const generateBtn = document.querySelector("#generate");
 
-
-//Is it possible to store the variables in one object?
+//Object for password criteria
 const passwordCriteria = {
   passLength: 0,
   lowerCase: "",
@@ -19,10 +15,7 @@ const lowerSelect = "abcdefghijklmnopqrstuvwxyz";
 const specialSelect = "!@#$%^&*()-=_+";
 const numberSelect = "1234567890";
 
-console.log(`variables are as follows: \n${upperSelect}, \n${lowerSelect}, \n${specialSelect}, \n${numberSelect}`);
-
-//function to generate the password - look to use '.include' to validate PW creation.
-
+//function to generate the password
 function generatePassword() {
   alert("We'll be asking you questions to help generate your password");
 
@@ -34,62 +27,42 @@ function generatePassword() {
     );
   }
 
+  //Broad while loop asks the end user questions about password criteria, stores them in applicable variables and then generates a random string to be the password.
   while (!passwordCriteria.lowerCase && !passwordCriteria.upperCase && !passwordCriteria.numbers && !passwordCriteria.specialChar) {
 
     let password = " ";
 
     //Boolean operators
-    passwordCriteria.lowerCase = confirm("Click OK to confirm including lower case characters.");
 
-    passwordCriteria.upperCase = confirm("Click OK to confirm including upper case characters.");
+    //This while loop is validating responses to ensure at least one selection is true.
+    while (!passwordCriteria.lowerCase && !passwordCriteria.upperCase && !passwordCriteria.numbers && !passwordCriteria.specialChar) {
+      alert("You must select at least one of the following criteria to be included in your password: \n-lower case characters \n-upper case characters \n-numbers \n-special characters");
 
-    passwordCriteria.numbers = confirm("Click OK to confirm including numbers.");
+      passwordCriteria.lowerCase = confirm("Click OK to confirm including lower case characters.");
 
-    passwordCriteria.specialChar = confirm("Click OK to confirm including special characters.");
+      passwordCriteria.upperCase = confirm("Click OK to confirm including upper case characters.");
 
+      passwordCriteria.numbers = confirm("Click OK to confirm including numbers.");
 
-    console.log(passwordCriteria.passLength);
+      passwordCriteria.specialChar = confirm("Click OK to confirm including special characters.");
+    }
 
-    console.log(passwordCriteria.lowerCase);
-
-    console.log(passwordCriteria.upperCase);
-
-    console.log(passwordCriteria.numbers);
-
-    console.log(passwordCriteria.specialChar);
-
-
-    /*including while loop for validation of selection and case correction*/
-    //pick guaranteed characters - picking those at the front of the password
-    //fischer yates algorithm
-
-    //if (criteria) guarateed characters to meet selected criteria
-
-    //separte statement for totally random
-
-    //put together.
-
-    console.log(password.length);
-
+    //using criteria provided above to generate the password.
     while (password.length < passwordCriteria.passLength) {
       if (passwordCriteria.lowerCase == true) {
         password += lowerSelect.charAt(Math.floor(Math.random() * lowerSelect.length));
-        console.log(password);
       }
 
       if (passwordCriteria.upperCase === true) {
         password += upperSelect.charAt(Math.floor(Math.random() * upperSelect.length));
-        console.log(password);
       }
 
       if (passwordCriteria.numbers === true) {
         password += numberSelect.charAt(Math.floor(Math.random() * numberSelect.length));
-        console.log(password);
       }
 
       if (passwordCriteria.specialChar === true) {
         password += specialSelect.charAt(Math.floor(Math.random() * specialSelect.length));
-        console.log(password);
       }
     }
     return password;
