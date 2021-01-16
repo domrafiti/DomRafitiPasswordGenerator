@@ -65,6 +65,7 @@ function generatePassword() {
         password += specialSelect.charAt(Math.floor(Math.random() * specialSelect.length));
       }
     }
+    //Returning password to be displayed in browser.
     return password;
   }
 }
